@@ -19,10 +19,10 @@
     </parent>
 
     <modules>
-        <module>city-manager-service</module>
-        <module>route-service</module>
         <module>cloud-config</module>
         <module>service-registry</module>
+        <module>city-manager-service</module>
+        <module>route-service</module>
     </modules>
 
     <properties>
@@ -31,6 +31,7 @@
         <java.version>1.8</java.version>
         <springfox.swagger.version>2.9.2</springfox.swagger.version>
         <spring-cloud.version>Edgware.SR4</spring-cloud.version>
+        <guava.version>20.0</guava.version>
     </properties>
 
     <dependencyManagement>
@@ -59,7 +60,7 @@
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>20.0</version>
+                <version>${guava.version}</version>
                 <scope>compile</scope>
             </dependency>
         </dependencies>

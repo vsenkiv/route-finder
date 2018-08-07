@@ -1,6 +1,6 @@
 package com.routefinder.routefinder.dto;
 
-public class Edge {
+public abstract class Edge {
 
     private String fromCity;
     private String toCity;

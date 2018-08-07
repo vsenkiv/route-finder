@@ -1,40 +1,24 @@
-package com.routefinder.citymanager.model;
-
-import org.springframework.format.annotation.DateTimeFormat;
+package com.routefinder.routefinder.dto;
 
 import java.util.Date;
 import java.util.Objects;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-@Entity
-@Table(name = "cityroute")
-public class CityRoute {
+public class CityRouteDTO {
 
-    @Id
-    @GeneratedValue
     private Integer id;
 
     private String city;
 
     private String destinyCity;
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @Temporal(TemporalType.TIMESTAMP)
     private Date departureTime;
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @Temporal(TemporalType.TIMESTAMP)
     private Date arrivalTime;
 
-    public CityRoute() {
+    public CityRouteDTO() {
     }
 
-    public CityRoute(String city, String destinyCity, Date departureTime, Date arrivalTime) {
+    public CityRouteDTO(String city, String destinyCity, Date departureTime, Date arrivalTime) {
         this.city = city;
         this.destinyCity = destinyCity;
         this.departureTime = departureTime;
@@ -85,10 +69,10 @@ public class CityRoute {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof CityRoute)) {
+        if (!(o instanceof CityRouteDTO)) {
             return false;
         }
-        CityRoute cityRoute = (CityRoute) o;
+        CityRouteDTO cityRoute = (CityRouteDTO) o;
         return Objects.equals(getCity(), cityRoute.getCity()) &&
                Objects.equals(getDestinyCity(), cityRoute.getDestinyCity()) &&
                Objects.equals(getDepartureTime(), cityRoute.getDepartureTime()) &&

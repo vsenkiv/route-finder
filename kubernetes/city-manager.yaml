@@ -13,7 +13,7 @@ spec:
         app: city-manager
     spec:
       containers:
-      - name: cloud-config
+      - name: city-manager
         image: vsenkiv/city-manager:latest
         command: [ "java", "-jar", "/opt/route/city-manager-service-0.0.1-SNAPSHOT.jar" ]
         imagePullPolicy: Always
