@@ -43,7 +43,7 @@ public class CityRouteController {
 
     @GetMapping("/destinations/{destinyCity}")
     public Iterable<CityRoute> cityRouteByDestinyCity(@PathVariable String destinyCity) {
-        return repository.findByDestintyCity(destinyCity);
+        return repository.findByDestinyCity(destinyCity);
     }
 
     @PostMapping
