@@ -8,7 +8,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-@EnableDiscoveryClient
 public class CityManagerApplication {
 
 	public static void main(String[] args) {
