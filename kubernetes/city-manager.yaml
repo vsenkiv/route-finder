@@ -1,0 +1,31 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: city-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: city-manager
+  template:
+    metadata:
+      labels:
+        app: city-manager
+    spec:
+      containers:
+      - name: cloud-config
+        image: vsenkiv/city-manager:latest
+        command: [ "java", "-jar", "/opt/route/city-manager-service-0.0.1-SNAPSHOT.jar" ]
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: city-manager
+spec:
+  ports:
+  - port: 8080
+  selector:
+    app: city-manager

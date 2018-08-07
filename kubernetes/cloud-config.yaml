@@ -1,0 +1,31 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: cloud-config-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloud-config-server
+  template:
+    metadata:
+      labels:
+        app: cloud-config-server
+    spec:
+      containers:
+      - name: cloud-config
+        image: vsenkiv/cloud-config-server:latest
+        command: [ "java", "-jar", "/opt/route/cloud-config-0.0.1-SNAPSHOT.jar" ]
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloud-config-server
+spec:
+  ports:
+  - port: 8080
+  selector:
+    app: cloud-config-server
