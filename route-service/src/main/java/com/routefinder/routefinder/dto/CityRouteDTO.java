@@ -7,6 +7,8 @@ public class CityRouteDTO {
 
     private Integer id;
 
+    private Double distance;
+
     private String city;
 
     private String destinyCity;
@@ -18,11 +20,12 @@ public class CityRouteDTO {
     public CityRouteDTO() {
     }
 
-    public CityRouteDTO(String city, String destinyCity, Date departureTime, Date arrivalTime) {
+    public CityRouteDTO(String city, String destinyCity, Date departureTime, Date arrivalTime, Double distance) {
         this.city = city;
         this.destinyCity = destinyCity;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
+        this.distance = distance;
     }
 
     public Integer getId() {
@@ -65,6 +68,14 @@ public class CityRouteDTO {
         this.arrivalTime = arrivalTime;
     }
 
+    public Double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(Double distance) {
+        this.distance = distance;
+    }
+
     @Override public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -76,11 +87,12 @@ public class CityRouteDTO {
         return Objects.equals(getCity(), cityRoute.getCity()) &&
                Objects.equals(getDestinyCity(), cityRoute.getDestinyCity()) &&
                Objects.equals(getDepartureTime(), cityRoute.getDepartureTime()) &&
-               Objects.equals(getArrivalTime(), cityRoute.getArrivalTime());
+               Objects.equals(getArrivalTime(), cityRoute.getArrivalTime()) &&
+               Objects.equals(getDistance(), cityRoute.getDistance());
     }
 
     @Override public int hashCode() {
 
-        return Objects.hash(getDestinyCity(), getDepartureTime(), getArrivalTime());
+        return Objects.hash(getDestinyCity(), getDepartureTime(), getArrivalTime(), getDistance());
     }
 }

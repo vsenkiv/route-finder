@@ -41,11 +41,11 @@ public class RouteFinder implements IShortestFinder{
         result.setShortestRoutesByTimeInterval((List<String>)optimalPathByTime.getOptimalPaths().get(0));
 
         // calculate the routes based on the distance
-        GraphBuilder<String, Long> graphBuilderByDistance = GraphBuilder.<String, Long>create();
+        GraphBuilder<String, Double> graphBuilderByDistance = GraphBuilder.<String, Double>create();
         StreamSupport.stream(allEdges.spliterator(), false).forEach(edge -> graphBuilderByDistance.connect(edge.getCity()).to(edge.getDestinyCity())
-            .withEdge(1L));
+            .withEdge(edge.getDistance()));
 
-        HipsterDirectedGraph<String, Long> graphByDistance = graphBuilderByDistance.createDirectedGraph();
+        HipsterDirectedGraph<String, Double> graphByDistance = graphBuilderByDistance.createDirectedGraph();
         SearchProblem pByDistance = GraphSearchProblem
             .startingFrom(allEdges.iterator().next().getCity())
             .in(graphByDistance)
