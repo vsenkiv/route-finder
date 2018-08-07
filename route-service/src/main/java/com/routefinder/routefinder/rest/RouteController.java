@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/route-from-the-start-city")
+@RestController()
 public class RouteController {
 
     private RouteFinder finder;
@@ -17,7 +17,7 @@ public class RouteController {
         this.finder = finder;
     }
 
-    @GetMapping("/to/{city}")
+    @GetMapping("to/{city}")
     public ShortestWayContainer findRoute(@PathVariable String city) {
         return finder.calculateTheShortestWay(city);
     }

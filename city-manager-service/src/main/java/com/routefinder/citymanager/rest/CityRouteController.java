@@ -2,6 +2,7 @@ package com.routefinder.citymanager.rest;
 
 import static org.springframework.http.HttpStatus.CREATED;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.routefinder.citymanager.model.CityRoute;
 import com.routefinder.citymanager.repository.CityRouteRepository;
 import com.routefinder.citymanager.validator.CityRouteValidator;
@@ -14,7 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/api/routes")
+import java.util.Collections;
+import java.util.List;
+
+@RestController()
 public class CityRouteController {
 
     private CityRouteRepository repository;
@@ -26,22 +30,23 @@ public class CityRouteController {
         this.validator = cityRouteValidator;
     }
 
-    @GetMapping()
+    @GetMapping("api/routes")
+    @HystrixCommand(fallbackMethod = "emptyList")
     public Iterable<CityRoute> cityRoutes() {
         return repository.findAll();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/api/routes/{id}")
     public CityRoute cityRouteByRouteId(@PathVariable Integer id) {
         return repository.findOne(id);
     }
 
-    @GetMapping("cities/{city}")
+    @GetMapping("api/routes/cities/{city}")
     public Iterable<CityRoute> cityRouteByCity(@PathVariable String city) {
         return repository.findByCity(city);
     }
 
-    @GetMapping("/destinations/{destinyCity}")
+    @GetMapping("api/routes/destinations/{destinyCity}")
     public Iterable<CityRoute> cityRouteByDestinyCity(@PathVariable String destinyCity) {
         return repository.findByDestinyCity(destinyCity);
     }
@@ -52,8 +57,12 @@ public class CityRouteController {
         return new ResponseEntity<>(repository.save(cityRoute), CREATED);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("api/routes/{id}")
     public void deleteRoute(@PathVariable Integer id) {
         repository.delete(id);
+    }
+
+    private List<CityRoute> emptyList(){
+        return Collections.emptyList();
     }
 }

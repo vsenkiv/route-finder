@@ -4,32 +4,32 @@ import java.util.List;
 
 public class ShortestWayContainer {
 
-    private List<EdgeWithDistanceWeight> shortestRoutesByDistance;
-    private List<EdgeWithTimeWeight> shortestRoutesByTimeInterval;
+    private List<String> shortestRoutesByDistance;
+    private List<String> shortestRoutesByTimeInterval;
 
     public ShortestWayContainer(){
 
     }
 
-    public ShortestWayContainer(List<EdgeWithDistanceWeight> shortestRoutesByDistance,
-                                List<EdgeWithTimeWeight> shortestRoutesByTimeInterval) {
+    public ShortestWayContainer(List<String> shortestRoutesByDistance,
+                                List<String> shortestRoutesByTimeInterval) {
         this.shortestRoutesByDistance = shortestRoutesByDistance;
         this.shortestRoutesByTimeInterval = shortestRoutesByTimeInterval;
     }
 
-    public List<EdgeWithDistanceWeight> getShortestRoutesByDistance() {
+    public List<String> getShortestRoutesByDistance() {
         return shortestRoutesByDistance;
     }
 
-    public void setShortestRoutesByDistance(List<EdgeWithDistanceWeight> shortestRoutesByDistance) {
+    public void setShortestRoutesByDistance(List<String> shortestRoutesByDistance) {
         this.shortestRoutesByDistance = shortestRoutesByDistance;
     }
 
-    public List<EdgeWithTimeWeight> getShortestRoutesByTimeInterval() {
+    public List<String> getShortestRoutesByTimeInterval() {
         return shortestRoutesByTimeInterval;
     }
 
-    public void setShortestRoutesByTimeInterval(List<EdgeWithTimeWeight> shortestRoutesByTimeInterval) {
+    public void setShortestRoutesByTimeInterval(List<String> shortestRoutesByTimeInterval) {
         this.shortestRoutesByTimeInterval = shortestRoutesByTimeInterval;
     }
 }

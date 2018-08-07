@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @FeignClient("${city-manager-service.name}")
 public interface CityRouteClient {
 
-    @GetMapping()
+    @GetMapping("api/routes")
     Iterable<CityRouteDTO> cityRoutes();
 }
