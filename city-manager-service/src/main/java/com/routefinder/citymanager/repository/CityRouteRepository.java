@@ -9,7 +9,7 @@ public interface CityRouteRepository extends PagingAndSortingRepository<CityRout
 
     List<CityRoute> findByCity(String city);
 
-    List<CityRoute> findByDestintyCity(String city);
+    List<CityRoute> findByDestinyCity(String city);
 
-    CityRoute findByCityAndDestintyCity(String city, String destinyCity);
+    CityRoute findByCityAndDestinyCity(String city, String destinyCity);
 }

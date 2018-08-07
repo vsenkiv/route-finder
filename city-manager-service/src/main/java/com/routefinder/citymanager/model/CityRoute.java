@@ -3,6 +3,7 @@ package com.routefinder.citymanager.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,16 +25,16 @@ public class CityRoute {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime departureTime;
+    private Date departureTime;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime arrivalTime;
+    private Date arrivalTime;
 
     public CityRoute() {
     }
 
-    public CityRoute(String city, String destinyCity, LocalDateTime departureTime, LocalDateTime arrivalTime) {
+    public CityRoute(String city, String destinyCity, Date departureTime, Date arrivalTime) {
         this.city = city;
         this.destinyCity = destinyCity;
         this.departureTime = departureTime;
@@ -52,11 +53,11 @@ public class CityRoute {
         return destinyCity;
     }
 
-    public LocalDateTime getDepartureTime() {
+    public Date getDepartureTime() {
         return departureTime;
     }
 
-    public LocalDateTime getArrivalTime() {
+    public Date getArrivalTime() {
         return arrivalTime;
     }
 
@@ -72,11 +73,11 @@ public class CityRoute {
         this.destinyCity = destinyCity;
     }
 
-    public void setDepartureTime(LocalDateTime departureTime) {
+    public void setDepartureTime(Date departureTime) {
         this.departureTime = departureTime;
     }
 
-    public void setArrivalTime(LocalDateTime arrivalTime) {
+    public void setArrivalTime(Date arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
 

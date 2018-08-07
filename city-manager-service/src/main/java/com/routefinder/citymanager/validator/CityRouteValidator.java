@@ -18,12 +18,12 @@ public class CityRouteValidator {
     }
 
     public void validate(CityRoute cityRoute) {
-        if (repository.findByCityAndDestintyCity(cityRoute.getCity(), cityRoute.getDestinyCity()) != null) {
+        if (repository.findByCityAndDestinyCity(cityRoute.getCity(), cityRoute.getDestinyCity()) != null) {
             throw new CityRouteAlreadyExistsException(
                 String.format("City route from %s to %s already exists", cityRoute.getCity(), cityRoute.getDestinyCity()));
         }
 
-        if (cityRoute.getDepartureTime().isBefore(cityRoute.getArrivalTime())) {
+        if (cityRoute.getDepartureTime().before(cityRoute.getArrivalTime())) {
             throw new InvalidTimeRangeException("Departure time is before the arrival time");
         }
     }
