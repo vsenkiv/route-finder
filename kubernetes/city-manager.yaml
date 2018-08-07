@@ -29,3 +29,17 @@ spec:
   - port: 8080
   selector:
     app: city-manager
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: city-manager
+spec:
+  rules:
+  - host: city-manager.senkiv.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: city-manager
+          servicePort: 8080
