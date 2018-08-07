@@ -7,6 +7,6 @@ import org.springframework.stereotype.Service;
 public class RouteFinder {
 
     public ShortestWayContainer calculateTheShortestWay(String city) {
-        return null;
+        return new ShortestWayContainer();
     }
 }

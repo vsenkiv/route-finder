@@ -7,6 +7,10 @@ public class ShortestWayContainer {
     private List<EdgeWithDistanceWeight> shortestRoutesByDistance;
     private List<EdgeWithTimeWeight> shortestRoutesByTimeInterval;
 
+    public ShortestWayContainer(){
+
+    }
+
     public ShortestWayContainer(List<EdgeWithDistanceWeight> shortestRoutesByDistance,
                                 List<EdgeWithTimeWeight> shortestRoutesByTimeInterval) {
         this.shortestRoutesByDistance = shortestRoutesByDistance;
