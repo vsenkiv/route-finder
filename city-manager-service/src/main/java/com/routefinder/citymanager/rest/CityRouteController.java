@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController()
 public class CityRouteController {
@@ -55,6 +57,12 @@ public class CityRouteController {
     public ResponseEntity<CityRoute> addRoute(@RequestBody CityRoute cityRoute) {
         validator.validate(cityRoute);
         return new ResponseEntity<>(repository.save(cityRoute), CREATED);
+    }
+
+    @PostMapping("api/add/batch")
+    public ResponseEntity<List<CityRoute>> addBatchOfRoutes(@RequestBody List<CityRoute> cityRoutes) {
+        List<CityRoute> savedItems = cityRoutes.stream().map(item->{validator.validate(item); return repository.save(item);}).collect(Collectors.toList());
+        return new ResponseEntity<List<CityRoute>>(savedItems, CREATED);
     }
 
     @DeleteMapping("api/routes/{id}")
