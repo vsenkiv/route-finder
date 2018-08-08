@@ -23,7 +23,7 @@ public class CityRouteValidator {
                 String.format("City route from %s to %s already exists", cityRoute.getCity(), cityRoute.getDestinyCity()));
         }
 
-        if (cityRoute.getDepartureTime().before(cityRoute.getArrivalTime())) {
+        if (cityRoute.getArrivalTime().before(cityRoute.getDepartureTime())) {
             throw new InvalidTimeRangeException("Departure time is before the arrival time");
         }
     }
